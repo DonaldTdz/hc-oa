@@ -37,8 +37,7 @@ Page({
             url: app.globalData.host + 'api/services/app/Employee/GetDingDingUserByCodeAsync',
             method: 'Get',
             data: {
-              code: res.authCode,
-              appId: app.globalData.appId
+              code: res.authCode
             },
             dataType: 'json',
             success: (res) => {
@@ -49,10 +48,9 @@ Page({
                 app.globalData.userInfo.avatar = '../../images/logo.jpeg';
               }
               this.setData({ userInfo: app.globalData.userInfo });
-              this.getScheduleSummary();
             },
             fail: function(res) {
-              // dd.alert({content:JSON.stringify(res)})
+              //dd.alert({content:JSON.stringify(res)})
               dd.hideLoading();
               dd.alert({ content: '获取用户信息异常', buttonText: '确定' });
             },
@@ -69,43 +67,11 @@ Page({
       });
     } else {
       this.setData({ userInfo: app.globalData.userInfo });
-      this.getScheduleSummary();
     }
   },
   onLoad() {
     //this.setData({items:[]});
     this.loginSystem();
-  },
-  getScheduleSummary() {
-    dd.showLoading();
-    dd.httpRequest({
-      url: app.globalData.host + 'api/services/app/Chart/GetScheduleSummaryAsync',
-      method: 'Get',
-      data: {
-        userId: this.data.userInfo.id,
-        areaCode: this.data.userInfo.areaCode
-      },
-      dataType: 'json',
-      success: (res) => {
-        dd.hideLoading();
-        //console.log('res', res.data.result);
-        this.setData({ items: res.data.result });
-        for (var i in this.data.items) {
-          if (this.data.items[i].num > 0) {
-            this.setData({ showChart: true });
-            break;
-          }
-        }
-      },
-      fail: function(res) {
-        // dd.alert({content:JSON.stringify(res)})
-        dd.hideLoading();
-        dd.alert({ content: '获取数据异常', buttonText: '确定' });
-      },
-      complete: function(res) {
-        dd.hideLoading();
-      }
-    });
   },
   onGridItemTap(e) {
     const curIndex = e.currentTarget.dataset.index;
