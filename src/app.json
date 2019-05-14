@@ -1,6 +1,11 @@
 {
   "pages": [
-    "page/index/index"
+    "page/index/index",
+    "page/reimburses/index",
+    "page/reimburses/create-reimburses/create-reimburses",
+    "page/reimburses/detail-reimburses/detail-reimburses",
+    "page/reimburses/create-reimbursesdetail/create-reimbursesdetail",
+    "page/reimburses/update-reimbursesdetail/update-reimbursesdetail"
   ],
   "window": {
     "enableWK": "YES",

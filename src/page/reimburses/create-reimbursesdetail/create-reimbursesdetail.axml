@@ -1,0 +1,66 @@
+<view class="page">
+  <form onSubmit="onSubmit" onReset="onReset">
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">客户：</view>
+        <view class="form-row-content">
+          <input class="input" name="customer" maxlength="100" placeholder="请输入客户" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">金额：</view>
+        <view class="form-row-content">
+          <input class="input" type="digit" value="0" name="amount" placeholder="小数点保留两位" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">发生日期：</view>
+        <view class="form-row-content">
+          <input name="happenDate" value="{{happenDate}}" class="input" onFocus="selectHappenDate" placeholder="请选择发生时间" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <picker onChange="bindTypeChange" value="{{typeIndex}}" range="{{types}}" range-key="text">
+        <view class="form-row">
+          <view class="row-title">报销类型：</view>
+          <view class="row-extra">{{types[typeIndex].text}}</view>
+          <image class="row-arrow" src="/images/arrowright.png" mode="aspectFill" />
+        </view>
+        </view>
+        <view class="page-section">
+          <view class="form-row">
+            <view class="form-row-label">票据张数：</view>
+            <view class="form-row-content">
+              <input name="invoiceNum" type="number" class="input" placeholder="请输入票据张数" />
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="page-section-title">发生地点：</view>
+          <view class="page-section-demo">
+            <textarea name="place" auto-height maxlength="100" placeholder="请输入地点" />
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="page-section-title">费用说明：</view>
+          <view class="page-section-demo">
+            <textarea name="desc" auto-height maxlength="250" placeholder="请输入费用说明" />
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="page-section-title">备注：</view>
+          <view class="page-section-demo">
+            <textarea name="remark" auto-height maxlength="250" placeholder="请输入备注" />
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="page-section-btn">
+            <button type="primary" formType="submit">保存</button></view>
+        </view>
+        </form>
+        </view>

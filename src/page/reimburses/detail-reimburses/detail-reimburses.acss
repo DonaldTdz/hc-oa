@@ -1,0 +1,93 @@
+.radio {
+  display: block;
+  margin-bottom: 20rpx;
+}
+.radio-text {
+  line-height: 1.8;
+}
+
+button+button {
+  margin-top: 32rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.page-section-title {
+  font-size: 15px;
+}
+
+.row-title {
+  flex: 1;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  font-size: 34rpx;
+  color: #000;
+}
+
+.row-extra {
+  flex-basis: initial;
+  font-size: 32rpx;
+  color: #888;
+}
+
+.row-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+
+.form-row-label{
+  width: auto
+}
+
+.fsize12{
+  font-size: 12px;
+}
+
+.section {
+  background: #fff;
+  margin-bottom: 32rpx;
+}
+
+
+.section-title {
+  padding: 16rpx 32rpx;
+}
+
+.section-header {
+  font-size: 17px;
+  padding: 16rpx 32rpx;
+}
+
+.location{
+  color: #87a7d6;
+}
+
+.location image{
+  width: 25px;
+  height: 25px;
+}
+
+.location .am-list-content{
+  color: #87a7d6;
+  font-size: 14px;
+}
+
+.photo{
+  width:20px;
+  height: 20px;
+}
+
+.pimage{
+   width:40px;
+  height:40px;
+  margin: 5px;
+}
+
+.buttonDelete{
+  background-color: red
+}

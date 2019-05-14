@@ -13,14 +13,19 @@ Page({
         {
           icon: '/images/dodge.png',
           title: '项目周报',
-          page: '../district/district',
+          page: '../index/index',
         }, {
           icon: '/images/bar.png',
           title: '项目报销',
-          page: '../task/task',
+          page: '../reimburses/index',
         }, {
           icon: '/images/area.png',
           title: '任务列表',
+          page: '../area/area',
+        }
+        , {
+          icon: '/images/area.png',
+          title: '审批',
           page: '../area/area',
         }
       ],
@@ -49,18 +54,18 @@ Page({
               }
               this.setData({ userInfo: app.globalData.userInfo });
             },
-            fail: function(res) {
+            fail: function (res) {
               //dd.alert({content:JSON.stringify(res)})
               dd.hideLoading();
               dd.alert({ content: '获取用户信息异常', buttonText: '确定' });
             },
-            complete: function(res) {
+            complete: function (res) {
               dd.hideLoading();
               //dd.alert({ content: 'complete' });
             }
           });
         },
-        fail: function(err) {
+        fail: function (err) {
           dd.alert({ content: '授权出错', buttonText: '确定' });
           dd.hideLoading();
         }

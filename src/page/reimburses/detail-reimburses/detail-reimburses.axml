@@ -1,0 +1,95 @@
+<view class="page">
+  <form onSubmit="onSubmit">
+    <view class="page-section">
+      <view class="page-section-title">所属项目：</view>
+      <picker onChange="bindProjectsChange" value="{{projectsIndex}}" range="{{projects}}" range-key="text" disabled="{{reimburse.status!=0}}" >
+        <view class="row">
+          <view class="row-extra">{{projects[projectsIndex].text}}</view>
+          <image class="row-arrow" src="/images/arrowright.png" mode="aspectFill" />
+        </view>
+      </picker>
+    </view>
+    <view class="page-section">
+      <!--<view class="page-section-title">报销总金额：</view> -->
+      <view class="form-row">
+        <view class="form-row-label">报销总金额：</view>
+        <view class="form-row-content">
+          <input class="input" type="digit" value="{{!reimburse.amount?0:reimburse.amount}}" disabled="true" placeholder="小数点保留两位" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <!--<view class="page-section-title">状态：</view> -->
+      <view class="form-row">
+        <view class="form-row-label">状态：</view>
+        <view class="form-row-content">
+          <input class="input" value="{{reimburse.statusName}}" disabled="true" />
+          <!--<radio-group name="status" value="{{reimburse.status}}"><label><radio value="1" checked="{{reimburse.status==1}}" />提交</label><label><radio value="2" checked="{{reimburse.status==2}}" disabled="true"/>审批通过</label><label><radio value="3" checked="{{reimburse.status==3}}"/>取消</label></radio-group> -->
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <!--<view class="page-section-title">申请时间：</view> -->
+      <view class="form-row">
+        <view class="form-row-label">申请时间：</view>
+        <view class="form-row-content">
+          <input name="submitDate" value="{{submitDate}}" disabled="{{reimburse.status!=0}}" class="input" onFocus="selectSubmitDate" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <!--<view class="page-section-title">审批人：</view> -->
+      <view class="form-row">
+        <view class="form-row-label">审批人：</view>
+        <view class="form-row-content">
+          <input class="input" value="{{reimburse.ApprovalName}}" disabled="true"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <!--<view class="page-section-title">审批时间：</view> -->
+      <view class="form-row">
+        <view class="form-row-label">审批时间：</view>
+        <view class="form-row-content">
+          <input class="input" value="{{reimburse.ApprovalTime}}" disabled="true" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <!--<view class="page-section-title">取消时间：</view> -->
+      <view class="form-row">
+        <view class="form-row-label">取消时间：</view>
+        <view class="form-row-content">
+          <input class="input" value="{{reimburse.cancelTime}}" disabled="true" />
+        </view>
+      </view>
+    </view>
+    <!--<view class="page-section"><view class="page-section-btns"><view><button type="ghost" size="mini" onTap="onDelete">删除</button></view><view><button type="primary" size="mini" formType="submit">保存</button></view></view></view> -->
+    <import src="/util/grid/index.axml"/>
+    <view a:if="{{reimburse.status==0}}">
+      <button type="primary" onTap="createReimbursesDetail">新增报销明细</button>
+    </view>
+    <view hidden="{{items.length == 0}}" class="page-margin page-padding-bottom">
+      <list>
+        <view slot="header">报销明细列表</view>
+        <block a:for="{{items}}">
+          <list-item key="item-{{index}}" index="{{index}}" last="{{index === (items.length - 1)}}" arrow="{{true}}" wrap="{{true}}" onClick="goVisit">{{item.customer}}
+            <view class="am-list-brief fsize12">金额：{{item.amount}}元</view>
+            <view class="am-list-brief fsize12">地点：{{item.place}}</view>
+            <view class="am-list-brief fsize12">发生日期：{{item.happenDateFormat}}</view>
+            <view slot="extra" class="fsize12">{{item.type}}</view>
+          </list-item>
+        </block>
+      </list>
+    </view>
+    <view class="item ddcenter page-margin page-padding" a:if="{{items.length == 0}}">
+      <image style="width: 80px; height:80px;" mode="aspectFit" src="/images/nodata-search.png" />
+      <text style="color:gray; margin-top:10px;">没有数据</text>
+    </view>
+    <view a:if="{{reimburse.status==0}}">
+      <button type="primary" formType="submit" id="bc" >保存</button>
+      <button type="primary" class="buttonDelete" onTap="onDelete">删除</button>
+      <button type="ghost" onTap="onSubmission" disabled="{{items.length<=0}}">提交</button>
+    </view>
+  </form>
+</view>
