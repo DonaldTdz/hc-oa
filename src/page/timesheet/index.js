@@ -8,7 +8,7 @@ Page({
   },
   onLoad(query) {
     this.cleanData();
-    this.getReimburses();
+    this.getTimeSheets();
   },
   onShow() {
     // this.cleanData();
@@ -21,14 +21,14 @@ Page({
       pageSize: 10
     });
   },
-  getReimburses() {
+  getTimeSheets() {
     let params = {};
     dd.showLoading();
     //免登陆
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Reimburse/GetPagedAsync',
+          url: app.globalData.host + '/api/services/app/TimeSheet/GetPagedAsync',
           method: 'Get',
           data: {
             SkipCount: (this.data.pageIndex - 1) * this.data.pageSize,
@@ -38,7 +38,6 @@ Page({
           },
           dataType: 'json',
           success: (res) => {
-            //console.info(`schedule: ${JSON.stringify(res.data.result)}`);
             const datas = res.data.result.items;
             const dataCount = res.data.result.totalCount;
             if (dataCount < 10) {
@@ -58,7 +57,7 @@ Page({
             }
           },
           fail: function (res) {
-            dd.alert({ content: '获取报销列表异常', buttonText: '确定' });
+            dd.alert({ content: '获取周报列表异常', buttonText: '确定' });
           },
           complete: function (res) {
             dd.hideLoading();
@@ -73,34 +72,26 @@ Page({
     });
   },
 
-  //点击报销跳转报销明细与编辑
+  //点击周报跳转周报详情
   goVisit(data) {
     dd.navigateTo({
-      url: "./detail-reimburses/detail-reimburses?id=" + this.data.items[data.index].id,
+      url: "./detail-timesheet/detail-timesheet?id=" + this.data.items[data.index].id,
     });
   },
 
-  //新增报销
+  //新增周报
   createReimburses() {
     dd.navigateTo({
-      url: "./create-reimburses/create-reimburses",
+      url: "./create-timesheet/create-timesheet",
     });
   },
 
   // 页面被拉到底部
   onReachBottom() {
     if (this.data.pageIndex > 1) {
-      this.getReimburses();
+      this.getTimeSheets();
     }
   },
-  // onShareAppMessage() {
-  //   // 返回自定义分享信息
-  //   return {
-  //     title: '任务列表',
-  //     desc: '所有任务列表',
-  //     path: 'pages/list/index',
-  //   };
-  // }
 });
 
 

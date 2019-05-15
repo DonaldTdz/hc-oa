@@ -13,7 +13,7 @@ Page({
         {
           icon: '/images/dodge.png',
           title: '项目周报',
-          page: '../index/index',
+          page: '../timesheet/index',
         }, {
           icon: '/images/bar.png',
           title: '项目报销',

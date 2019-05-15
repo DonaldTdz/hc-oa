@@ -244,6 +244,40 @@ Page({
     });
   },
 
+//提交审批
+  onSubmission(){
+ //免登陆
+    dd.getAuthCode({
+      success: (res) => {
+        dd.httpRequest({
+          url: app.globalData.host + '/api/services/app/Reimburse/SubmitApproval?id=' + this.data.reimburse.id,
+          method: 'Post',
+          headers: { 'Content-Type': 'application/json' },
+          dataType: 'json',
+          success: (res) => {
+            dd.alert({
+              content: '提交成功', buttonText: '确定', success: () => {
+                dd.navigateTo({
+                  url: "../index",
+                });
+              },
+            });
+          },
+          fail: function (res) {
+            dd.alert({ content: '提交异常', buttonText: '确定' });
+          },
+          complete: function (res) {
+            dd.hideLoading();
+          }
+        });
+      },
+      fail: function (err) {
+        dd.alert({ content: '授权出错', buttonText: '确定' });
+        dd.hideLoading();
+      }
+    });
+  },
+
   //新增报销明细
   createReimbursesDetail() {
     dd.navigateTo({

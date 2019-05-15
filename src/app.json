@@ -5,7 +5,10 @@
     "page/reimburses/create-reimburses/create-reimburses",
     "page/reimburses/detail-reimburses/detail-reimburses",
     "page/reimburses/create-reimbursesdetail/create-reimbursesdetail",
-    "page/reimburses/update-reimbursesdetail/update-reimbursesdetail"
+    "page/reimburses/update-reimbursesdetail/update-reimbursesdetail",
+    "page/timesheet/index",
+    "page/timesheet/create-timesheet/create-timesheet",
+    "page/timesheet/detail-timesheet/detail-timesheet"
   ],
   "window": {
     "enableWK": "YES",

@@ -1,0 +1,39 @@
+<view class="page">
+  <form onSubmit="onSubmit" onReset="onReset">
+    <view class="page-section">
+      <view class="page-section-title">所属项目：</view>
+      <picker onChange="bindProjectsChange"  value="{{projectsIndex}}" range="{{projects}}" range-key="text">
+        <view class="row">
+          <view class="row-extra">{{projects[projectsIndex].text}}</view>
+          <image class="row-arrow" src="/images/arrowright.png" mode="aspectFill" />
+        </view>
+      </picker>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">工作日期：</view>
+      <view class="form-row">
+        <view class="form-row-content">
+          <input name="workeDate" value="{{workeDate}}" class="input" onFocus="selectDate" placeholder="请选择工作日期" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">工时：</view>
+      <view class="form-row">
+        <view class="form-row-content">
+          <input class="input" type="number" value="0" name="hour" placeholder="请输入工时" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">工作内容：</view>
+      <view class="page-section-demo">
+            <textarea name="content" auto-height maxlength="250" placeholder="请输入工作内容" />
+          </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-btn">
+          <button type="primary" formType="submit">提交</button></view>
+    </view>
+  </form>
+</view>
