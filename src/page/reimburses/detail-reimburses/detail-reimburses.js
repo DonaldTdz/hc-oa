@@ -244,14 +244,17 @@ Page({
     });
   },
 
-//提交审批
-  onSubmission(){
- //免登陆
+  //提交审批
+  onSubmission() {
+    //免登陆
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Reimburse/SubmitApproval?id=' + this.data.reimburse.id,
+          url: app.globalData.host + '/api/services/app/Reimburse/SubmitApproval',
           method: 'Post',
+          data: {
+            id:this.data.reimburse.id
+          },
           headers: { 'Content-Type': 'application/json' },
           dataType: 'json',
           success: (res) => {
@@ -285,7 +288,7 @@ Page({
     });
   },
 
- //点击报销明细跳转报销明细编辑
+  //点击报销明细跳转报销明细编辑
   goVisit(data) {
     dd.navigateTo({
       url: "../update-reimbursesdetail/update-reimbursesdetail?id=" + this.data.items[data.index].id,
