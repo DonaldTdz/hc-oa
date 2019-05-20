@@ -1,10 +1,10 @@
 <import src="/util/grid/index.axml"/>
 <view a:if="{{userInfo.name}}">
-  <card thumb="{{userInfo.avatar}}" title="{{userInfo.name}}" subTitle="{{userInfo.position}}" arrow="{{false}}" />
+  <card thumb="{{userInfo.avatar}}" title="{{userInfo.name}}" subTitle="{{userInfo.position}}" arrow="{{false}}" msgUrl="../../images/warn_y.png" />
 </view>
 <view class="item page-margin" a:if="{{items.length == 0}}">
   <image style="width: 80px; height:80px;" mode="aspectFit" src="../../images/nodata-search.png" />
-  <text style="color:gray; margin-top:10px;">没有数据</text>
+  <text style="color:gray; margin-top:10px;"></text>
 </view>
 <view style="margin-top:10px;">
   <template is="grid" data="{{...arr}}"/>
