@@ -33,7 +33,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/DataDictionary/GetDropDownDtosByGroupAsync?group=3',
+          url: app.globalData.host + 'api/services/app/DataDictionary/GetDropDownDtosByGroupAsync?group=3',
           method: 'Get',
           // dataType: 'json',
           success: (res) => {
@@ -62,7 +62,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/ReimburseDetail/GetByIdAsync?id=' + this.data.id,
+          url: app.globalData.host + 'api/services/app/ReimburseDetail/GetByIdAsync?id=' + this.data.id,
           method: 'Get',
           success: (res) => {
             this.data.types.forEach(function (item, index) {
@@ -123,7 +123,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/ReimburseDetail/CreateOrUpdateAsync',
+          url: app.globalData.host + 'api/services/app/ReimburseDetail/CreateOrUpdateAsync',
           data: pdata,
           method: 'Post',
           headers: { 'Content-Type': 'application/json' },

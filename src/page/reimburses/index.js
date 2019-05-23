@@ -28,7 +28,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Reimburse/GetPagedAsync',
+          url: app.globalData.host + 'api/services/app/Reimburse/GetPagedAsync',
           method: 'Get',
           data: {
             SkipCount: (this.data.pageIndex - 1) * this.data.pageSize,

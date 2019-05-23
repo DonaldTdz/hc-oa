@@ -8,7 +8,11 @@
     "page/reimburses/update-reimbursesdetail/update-reimbursesdetail",
     "page/timesheet/index",
     "page/timesheet/create-timesheet/create-timesheet",
-    "page/timesheet/detail-timesheet/detail-timesheet"
+    "page/timesheet/detail-timesheet/detail-timesheet",
+    "page/messages/index",
+    "page/messages/detail-messages/detail-messages",
+    "page/completedtask/index",
+    "page/completedtask/modify-completedtask/modify-completedtask"
   ],
   "window": {
     "enableWK": "YES",

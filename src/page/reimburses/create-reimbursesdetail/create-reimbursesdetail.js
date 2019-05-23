@@ -28,7 +28,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/DataDictionary/GetDropDownDtosByGroupAsync?group=3',
+          url: app.globalData.host + 'api/services/app/DataDictionary/GetDropDownDtosByGroupAsync?group=3',
           method: 'Get',
           // dataType: 'json',
           success: (res) => {
@@ -81,7 +81,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/ReimburseDetail/CreateOrUpdateAsync',
+          url: app.globalData.host + 'api/services/app/ReimburseDetail/CreateOrUpdateAsync',
           data: pdata,
           method: 'Post',
           headers: { 'Content-Type': 'application/json' },
@@ -90,7 +90,7 @@ Page({
             dd.alert({
               content: '新增成功', buttonText: '确定', success: () => {
                 dd.navigateTo({
-                  url: "../detail-reimburses/detail-reimburses?id="+this.data.reimburseId,
+                  url: "../create-reimburses/create-reimburses?id="+this.data.reimburseId,
                 });
               },
             });

@@ -3,7 +3,7 @@
   <form onSubmit="onSubmit" onReset="onReset">
     <view class="page-section">
       <view class="page-section-title">所属项目：</view>
-      <picker onChange="bindProjectsChange"  value="{{projectsIndex}}" range="{{projects}}" range-key="text">
+      <picker onChange="bindProjectsChange" value="{{projectsIndex}}" range="{{projects}}" range-key="text">
         <view class="row">
           <!--<view class="row-title">所属项目：</view> -->
           <view class="row-extra">{{projects[projectsIndex].text}}</view>
@@ -16,7 +16,7 @@
       <view class="form-row">
         <!--<view class="form-row-label">总金额：</view> -->
         <view class="form-row-content">
-          <input class="input" type="digit" value="0" name="amount" disabled="true" placeholder="小数点保留两位" />
+          <input class="input" type="digit" name="amount" value="{{reimburse.amount?reimburse.amount:0}}" disabled="true" placeholder="小数点保留两位" />
         </view>
       </view>
       <!--<view class="form-line" /> -->
@@ -31,9 +31,29 @@
         </view>
       </view>
     </view>
+    <view>
+      <button type="primary" formType="submit">新增报销明细</button>
+    </view>
+    <view hidden="{{items.length == 0}}" class="page-margin page-padding-bottom">
+      <list>
+        <view slot="header">报销明细列表</view>
+        <block a:for="{{items}}">
+          <list-item key="item-{{index}}" index="{{index}}" last="{{index === (items.length - 1)}}" arrow="{{true}}" wrap="{{true}}" onClick="goVisit">{{item.customer}}
+            <view class="am-list-brief fsize12">金额：{{item.amount}}元</view>
+            <view class="am-list-brief fsize12">地点：{{item.place}}</view>
+            <view class="am-list-brief fsize12">发生日期：{{item.happenDateFormat}}</view>
+            <view slot="extra" class="fsize12">{{item.type}}</view>
+          </list-item>
+        </block>
+      </list>
+    </view>
+    <view class="item ddcenter page-margin page-padding" a:if="{{items.length == 0}}">
+      <image style="width: 80px; height:80px;" mode="aspectFit" src="/images/nodata-search.png" />
+      <text style="color:gray; margin-top:10px;">没有数据</text>
+    </view>
     <view class="page-section">
       <view class="page-section-btn">
-          <button type="primary" formType="submit">保存</button></view>
+        <button type="ghost" onTap="onSubmission">提交</button></view>
     </view>
   </form>
 </view>

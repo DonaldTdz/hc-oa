@@ -26,7 +26,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Project/GetDropDownsAsync',
+          url: app.globalData.host + 'api/services/app/Project/GetDropDownsAsync',
           method: 'Get',
           // dataType: 'json',
           success: (res) => {
@@ -79,7 +79,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/TimeSheet/SubmitApproval',
+          url: app.globalData.host + 'api/services/app/TimeSheet/SubmitApproval',
           data: pdata,
           method: 'Post',
           headers: { 'Content-Type': 'application/json' },

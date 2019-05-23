@@ -22,7 +22,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/TimeSheet/GetByIdAsync?id=' + this.data.id,
+          url: app.globalData.host + 'api/services/app/TimeSheet/GetByIdAsync?id=' + this.data.id,
           method: 'Get',
           success: (res) => {
             this.setData({ timeSheet: res.data.result})

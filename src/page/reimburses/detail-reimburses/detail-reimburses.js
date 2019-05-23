@@ -38,7 +38,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Project/GetDropDownsAsync',
+          url: app.globalData.host + 'api/services/app/Project/GetDropDownsAsync',
           method: 'Get',
           // dataType: 'json',
           success: (res) => {
@@ -68,7 +68,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Reimburse/GetByIdAsync?id=' + this.data.id,
+          url: app.globalData.host + 'api/services/app/Reimburse/GetByIdAsync?id=' + this.data.id,
           method: 'Get',
           success: (res) => {
             this.data.projects.forEach(function (item, index) {
@@ -129,7 +129,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Reimburse/CreateOrUpdateAsync',
+          url: app.globalData.host + 'api/services/app/Reimburse/CreateOrUpdateAsync',
           data: pdata,
           method: 'Post',
           headers: { 'Content-Type': 'application/json' },
@@ -164,7 +164,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Reimburse/DeleteAsync?id=' + this.data.reimburse.id,
+          url: app.globalData.host + 'api/services/app/Reimburse/DeleteAsync?id=' + this.data.reimburse.id,
           method: 'Delete',
           headers: { 'Content-Type': 'application/json' },
           dataType: 'json',
@@ -200,7 +200,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/ReimburseDetail/GetPagedAsync',
+          url: app.globalData.host + 'api/services/app/ReimburseDetail/GetPagedAsync',
           method: 'Get',
           data: {
             SkipCount: (this.data.pageIndex - 1) * this.data.pageSize,
@@ -250,7 +250,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/Reimburse/SubmitApproval',
+          url: app.globalData.host + 'api/services/app/Reimburse/SubmitApproval',
           method: 'Post',
           data: {
             id:this.data.reimburse.id

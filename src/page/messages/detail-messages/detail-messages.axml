@@ -1,0 +1,28 @@
+<view class="">
+    <list>
+      <list-item>
+        <view>接收时间：
+        </view>
+        <view class="am-list-brief" >{{message.sendTimeFormat}}
+        </view>
+      </list-item>
+       <list-item wrap="{{true}}">
+        <view>内容：
+        </view>
+        <view class="am-list-brief">{{message.content}}
+        </view>
+      </list-item>
+      <list-item>
+        <view>是否已读：
+        </view>
+        <view  class="am-list-brief">{{message.isRead==true?"已读":"未读"}}
+        </view>
+      </list-item>
+      <list-item>
+        <view>已读时间：
+        </view>
+        <view class="am-list-brief">{{message.readTimeFormat}}
+        </view>
+      </list-item>
+    </list>
+  </view>

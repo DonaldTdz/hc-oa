@@ -11,22 +11,22 @@ Page({
       onItemTap: 'onGridItemTap',
       list: [
         {
-          icon: '/images/dodge.png',
+          icon: '/images/timesheet.png',
           title: '项目周报',
           page: '../timesheet/index',
         }, {
-          icon: '/images/bar.png',
+          icon: '/images/reimburses.png',
           title: '项目报销',
           page: '../reimburses/index',
         }, {
-          icon: '/images/area.png',
+          icon: '/images/task-list.png',
           title: '任务列表',
-          page: '../area/area',
+          page: '../completedtask/index',
         }
         , {
-          icon: '/images/area.png',
-          title: '审批',
-          page: '../area/area',
+          icon: '/images/msg.png',
+          title: '消息中心',
+          page: '../messages/index',
         }
       ],
     }
@@ -81,7 +81,7 @@ Page({
   onGridItemTap(e) {
     const curIndex = e.currentTarget.dataset.index;
     const pageNav = this.data.arr.list[curIndex];
-    if (curIndex == 3) {
+    if (curIndex == 4) {
       if (app.globalData.userInfo.areaCode == 4) {
         dd.navigateTo({
           url: pageNav.page,

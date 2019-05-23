@@ -33,7 +33,7 @@
       <view class="form-row">
         <view class="form-row-label">申请时间：</view>
         <view class="form-row-content">
-          <input name="submitDate" value="{{submitDate}}" disabled="{{reimburse.status!=0}}" class="input" onFocus="selectSubmitDate" />
+          <input name="submitDate" value="{{submitDate}}" disabled="true" class="input" onFocus="selectSubmitDate" />
         </view>
       </view>
     </view>
@@ -42,7 +42,7 @@
       <view class="form-row">
         <view class="form-row-label">审批人：</view>
         <view class="form-row-content">
-          <input class="input" value="{{reimburse.ApprovalName}}" disabled="true"/>
+          <input class="input" value="{{reimburse.approverName}}" disabled="true"/>
         </view>
       </view>
     </view>
@@ -51,7 +51,7 @@
       <view class="form-row">
         <view class="form-row-label">审批时间：</view>
         <view class="form-row-content">
-          <input class="input" value="{{reimburse.ApprovalTime}}" disabled="true" />
+          <input class="input" value="{{reimburse.approvalTimeFormat}}" disabled="true" />
         </view>
       </view>
     </view>
@@ -66,9 +66,6 @@
     </view>
     <!--<view class="page-section"><view class="page-section-btns"><view><button type="ghost" size="mini" onTap="onDelete">删除</button></view><view><button type="primary" size="mini" formType="submit">保存</button></view></view></view> -->
     <import src="/util/grid/index.axml"/>
-    <view a:if="{{reimburse.status==0}}">
-      <button type="primary" onTap="createReimbursesDetail">新增报销明细</button>
-    </view>
     <view hidden="{{items.length == 0}}" class="page-margin page-padding-bottom">
       <list>
         <view slot="header">报销明细列表</view>
@@ -85,11 +82,6 @@
     <view class="item ddcenter page-margin page-padding" a:if="{{items.length == 0}}">
       <image style="width: 80px; height:80px;" mode="aspectFit" src="/images/nodata-search.png" />
       <text style="color:gray; margin-top:10px;">没有数据</text>
-    </view>
-    <view a:if="{{reimburse.status==0}}">
-      <button type="primary" formType="submit" id="bc" >保存</button>
-      <button type="primary" class="buttonDelete" onTap="onDelete">删除</button>
-      <button type="ghost" onTap="onSubmission" disabled="{{items.length<=0}}">提交</button>
     </view>
   </form>
 </view>

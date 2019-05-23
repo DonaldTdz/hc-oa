@@ -1,0 +1,17 @@
+<import src="/util/grid/index.axml"/>
+<view hidden="{{items.length == 0}}" class="page-margin page-padding-bottom">
+  <list>
+    <view slot="header">任务列表</view>
+    <block a:for="{{items}}">
+      <list-item key="item-{{index}}" index="{{index}}" last="{{index === (items.length - 1)}}" arrow="{{true}}" wrap="{{true}}" onClick="goVisit">{{item.statusName}}
+        <view class="am-list-brief fsize12">所属项目：{{item.projectName}}</view>
+        <view class="am-list-brief fsize12">创建日期：{{item.closingDateFormat}}</view>
+        <view slot="extra" class="fsize12">{{item.isCompleted==true?"已完成":"未完成"}}</view>
+      </list-item>
+    </block>
+  </list>
+</view>
+<view class="item ddcenter page-margin page-padding" a:if="{{items.length == 0}}">
+  <image style="width: 80px; height:80px;" mode="aspectFit" src="/images/nodata-search.png" />
+  <text style="color:gray; margin-top:10px;">没有数据</text>
+</view>

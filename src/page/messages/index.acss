@@ -1,0 +1,43 @@
+.fsize12{
+  font-size: 12px;
+}
+
+.section {
+  background: #fff;
+  margin-bottom: 32rpx;
+}
+
+
+.section-title {
+  padding: 16rpx 32rpx;
+}
+
+.section-header {
+  font-size: 17px;
+  padding: 16rpx 32rpx;
+}
+
+.location{
+  color: #87a7d6;
+}
+
+.location image{
+  width: 25px;
+  height: 25px;
+}
+
+.location .am-list-content{
+  color: #87a7d6;
+  font-size: 14px;
+}
+
+.photo{
+  width:20px;
+  height: 20px;
+}
+
+.pimage{
+   width:40px;
+  height:40px;
+  margin: 5px;
+}

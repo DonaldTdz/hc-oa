@@ -1,0 +1,58 @@
+<view class="page">
+  <form onSubmit="onSubmit">
+    <view class="page-section">
+      <view class="page-section-title">所属项目：</view>
+      <view class="form-row">
+             <!-- <view class="am-list-brief">{{task.projectName}}</view> -->
+          <input value="{{task.projectName}}" class="input" disabled="true" />
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">任务类型：</view>
+      <view class="form-row">
+        <!-- <view class="am-list-brief">{{task.statusName}}</view> -->
+        <view class="form-row-content">
+          <input value="{{task.statusName}}" class="input" disabled="true"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">内容：</view>
+      <view class="page-section-demo">
+        <!-- <textarea value="{{task.content}}" auto-height maxlength="250" disabled="true" /> -->
+        <view class="am-list-brief">{{task.content}}
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">是否完成：</view>
+      <view class="page-section-demo">
+        <radio-group name="isCompleted" value="isCompleted">
+          <label>
+            <radio value="true" checked="{{task.isCompleted}}" />已完成</label>
+          <label>
+            <radio value="false" checked="{{!task.isCompleted}}" />未完成</label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">截止日期：</view>
+      <view class="form-row">
+        <view class="form-row-content">
+          <input value="{{task.closingDateFormat}}" class="input"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">创建日期：</view>
+      <view class="form-row">
+        <view class="form-row-content">
+          <input value="{{task.creationTimeFormat}}" class="input"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="page-section-btn">
+        <button type="primary" formType="submit">提交</button></view>
+    </view>
+  </form>
+</view>

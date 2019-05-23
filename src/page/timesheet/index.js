@@ -28,7 +28,7 @@ Page({
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
-          url: app.globalData.host + '/api/services/app/TimeSheet/GetPagedAsync',
+          url: app.globalData.host + 'api/services/app/TimeSheet/GetPagedAsync',
           method: 'Get',
           data: {
             SkipCount: (this.data.pageIndex - 1) * this.data.pageSize,
