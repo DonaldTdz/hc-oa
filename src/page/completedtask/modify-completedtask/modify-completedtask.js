@@ -39,8 +39,8 @@ Page({
 
   //修改任务状态
   onSubmit(e) {
-    let isCompleted = e.detail.value["isCompleted"]
-    this.data.task.isCompleted=isCompleted;
+    // let isCompleted = e.detail.value["isCompleted"]
+    this.data.task.isCompleted=true;
     let pdata = JSON.stringify({ completedtask: this.data.task });
     //免登陆
     dd.getAuthCode({

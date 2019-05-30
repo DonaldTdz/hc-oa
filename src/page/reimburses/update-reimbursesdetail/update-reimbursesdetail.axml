@@ -58,7 +58,7 @@
             <textarea name="remark" auto-height value="{{reimburseDetail.remark}}" maxlength="250" placeholder="请输入备注" />
           </view>
         </view>
-        <view class="page-section">
+        <view class="page-section" a:if="{{status}}">
           <view class="page-section-btn">
             <button type="primary" formType="submit">保存</button></view>
         </view>

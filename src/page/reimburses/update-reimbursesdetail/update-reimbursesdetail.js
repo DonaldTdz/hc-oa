@@ -7,11 +7,12 @@ Page({
     typeIndex: 0,
     happenDate: '',
     id: '',
-    reimburseDetail: {}
+    reimburseDetail: {},
+    status:''
   },
 
   onLoad(query) {
-    this.setData({ id: query.id });
+    this.setData({ id: query.id,status: query.status });
     this.getTypes();
   },
 

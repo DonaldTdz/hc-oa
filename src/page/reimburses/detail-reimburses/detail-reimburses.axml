@@ -83,5 +83,9 @@
       <image style="width: 80px; height:80px;" mode="aspectFit" src="/images/nodata-search.png" />
       <text style="color:gray; margin-top:10px;">没有数据</text>
     </view>
+     <view class="page-section" a:if="{{!reimburse.status}}">
+      <view class="page-section-btn">
+        <button type="ghost" onTap="onSubmission">提交</button></view>
+    </view>
   </form>
 </view>

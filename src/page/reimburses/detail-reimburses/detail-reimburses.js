@@ -282,16 +282,16 @@ Page({
   },
 
   //新增报销明细
-  createReimbursesDetail() {
-    dd.navigateTo({
-      url: "../create-reimbursesdetail/create-reimbursesdetail?reimburseId=" + this.data.reimburse.id,
-    });
-  },
+  // createReimbursesDetail() {
+  //   dd.navigateTo({
+  //     url: "../create-reimbursesdetail/create-reimbursesdetail?reimburseId=" + this.data.reimburse.id,
+  //   });
+  // },
 
   //点击报销明细跳转报销明细编辑
   goVisit(data) {
     dd.navigateTo({
-      url: "../update-reimbursesdetail/update-reimbursesdetail?id=" + this.data.items[data.index].id,
+      url: "../update-reimbursesdetail/update-reimbursesdetail?id=" + this.data.items[data.index].id+"&status="+this.data.reimburse.status,
     });
   },
 

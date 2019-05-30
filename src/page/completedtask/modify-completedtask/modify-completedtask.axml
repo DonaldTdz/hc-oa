@@ -25,14 +25,20 @@
     </view>
     <view class="page-section">
       <view class="page-section-title">是否完成：</view>
-      <view class="page-section-demo">
-        <radio-group name="isCompleted" value="isCompleted">
+        <view class="form-row">
+        <!-- <view class="am-list-brief">{{task.statusName}}</view> -->
+        <view class="form-row-content">
+          <input value="{{task.isCompleted?'已完成':'未完成'}}" class="input" disabled="true"/>
+        </view>
+      </view>
+      <!-- <view class="page-section-demo">
+        <radio-group name="isCompleted" value="isCompleted" disabled="true">
           <label>
             <radio value="true" checked="{{task.isCompleted}}" />已完成</label>
           <label>
             <radio value="false" checked="{{!task.isCompleted}}" />未完成</label>
         </radio-group>
-      </view>
+      </view> -->
     </view>
     <view class="page-section">
       <view class="page-section-title">截止日期：</view>
@@ -50,9 +56,9 @@
         </view>
       </view>
     </view>
-    <view class="page-section">
+    <view class="page-section" a:if="{{!task.isCompleted}}">
       <view class="page-section-btn">
-        <button type="primary" formType="submit">提交</button></view>
+        <button type="primary" formType="submit">已完成</button></view>
     </view>
   </form>
 </view>

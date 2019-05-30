@@ -167,15 +167,14 @@ Page({
     if (!this.data.id || this.data.items.length <= 0) {
       return dd.alert({ content: '请先填写报销和报销明细', buttonText: '确定' })
     }
+    let param = JSON.stringify({ id: this.data.reimburse.id });
     //免登陆
     dd.getAuthCode({
       success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/Reimburse/SubmitApproval',
           method: 'Post',
-          data: {
-            id: this.data.reimburse.id
-          },
+          data: param,
           headers: { 'Content-Type': 'application/json' },
           dataType: 'json',
           success: (res) => {
@@ -250,6 +249,13 @@ Page({
         url: "../create-reimbursesdetail/create-reimbursesdetail?reimburseId=" + this.data.id,
       });
     }
+  },
+
+  //报销明细编辑
+  goVisit(data) {
+    dd.navigateTo({
+      url: "../update-reimbursesdetail/update-reimbursesdetail?id=" + this.data.items[data.index].id,
+    });
   },
 
   //新增报销明细

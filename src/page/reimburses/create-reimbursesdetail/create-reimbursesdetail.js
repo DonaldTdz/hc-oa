@@ -14,6 +14,10 @@ Page({
     this.getTypes();
   },
 
+  onShow() {
+  },
+
+
   bindTypeChange(e) {
     this.setData({
       typeIndex: e.detail.value,
@@ -90,7 +94,7 @@ Page({
             dd.alert({
               content: '新增成功', buttonText: '确定', success: () => {
                 dd.navigateTo({
-                  url: "../create-reimburses/create-reimburses?id="+this.data.reimburseId,
+                  url: "../create-reimburses/create-reimburses?id=" + this.data.reimburseId,
                 });
               },
             });
