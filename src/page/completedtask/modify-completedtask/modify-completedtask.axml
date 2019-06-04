@@ -3,62 +3,73 @@
     <view class="page-section">
       <view class="page-section-title">所属项目：</view>
       <view class="form-row">
-             <!-- <view class="am-list-brief">{{task.projectName}}</view> -->
-          <input value="{{task.projectName}}" class="input" disabled="true" />
+        <!--<view class="am-list-brief">{{task.projectName}}</view> -->
+        <input value="{{task.projectName}}" class="input" disabled="true" />
       </view>
     </view>
     <view class="page-section">
       <view class="page-section-title">任务类型：</view>
       <view class="form-row">
-        <!-- <view class="am-list-brief">{{task.statusName}}</view> -->
+        <!--<view class="am-list-brief">{{task.statusName}}</view> -->
         <view class="form-row-content">
           <input value="{{task.statusName}}" class="input" disabled="true"/>
         </view>
       </view>
     </view>
+    <view class="page-section" a:if="{{task.status==1 && !task.isCompleted}}">
+      <view class="page-section-title">保证金(元)：</view>
+      <view class="form-row">
+        <!--<view class="am-list-brief">{{task.statusName}}</view> -->
+        <view class="form-row-content">
+          <input class="input" type="digit" name="bond" value="{{bond}}" maxlength="10" placeholder="小数点后保留两位" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section" a:if="{{task.status==3 && !task.isCompleted}}">
+      <view class="page-section-title">是否中标：</view>
+      <view class="page-section-demo">
+        <radio-group onChange="radioChange">
+          <label>
+            <radio value="true" checked="true" />已中标</label>
+          <label>
+            <radio value="false" />未中标</label></radio-group></view>
+    </view>
     <view class="page-section">
       <view class="page-section-title">内容：</view>
       <view class="page-section-demo">
-        <!-- <textarea value="{{task.content}}" auto-height maxlength="250" disabled="true" /> -->
+        <!--<textarea value="{{task.content}}" auto-height maxlength="250" disabled="true" /> -->
         <view class="am-list-brief">{{task.content}}
+        </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="page-section-title">是否完成：</view>
+      <view class="page-section">
+        <view class="page-section-title">是否完成：</view>
         <view class="form-row">
-        <!-- <view class="am-list-brief">{{task.statusName}}</view> -->
-        <view class="form-row-content">
-          <input value="{{task.isCompleted?'已完成':'未完成'}}" class="input" disabled="true"/>
+          <!--<view class="am-list-brief">{{task.statusName}}</view> -->
+          <view class="form-row-content">
+            <input value="{{task.isCompleted?'已完成':'未完成'}}" class="input" disabled="true"/>
+          </view>
+        </view>
+        <!--<view class="page-section-demo"><radio-group name="isCompleted" value="isCompleted" disabled="true"><label><radio value="true" checked="{{task.isCompleted}}" />已完成</label><label><radio value="false" checked="{{!task.isCompleted}}" />未完成</label></radio-group></view> -->
+      </view>
+      <view class="page-section">
+        <view class="page-section-title">截止日期：</view>
+        <view class="form-row">
+          <view class="form-row-content">
+            <input value="{{task.closingDateFormat}}" class="input"/>
+          </view>
         </view>
       </view>
-      <!-- <view class="page-section-demo">
-        <radio-group name="isCompleted" value="isCompleted" disabled="true">
-          <label>
-            <radio value="true" checked="{{task.isCompleted}}" />已完成</label>
-          <label>
-            <radio value="false" checked="{{!task.isCompleted}}" />未完成</label>
-        </radio-group>
-      </view> -->
-    </view>
-    <view class="page-section">
-      <view class="page-section-title">截止日期：</view>
-      <view class="form-row">
-        <view class="form-row-content">
-          <input value="{{task.closingDateFormat}}" class="input"/>
+      <view class="page-section">
+        <view class="page-section-title">创建日期：</view>
+        <view class="form-row">
+          <view class="form-row-content">
+            <input value="{{task.creationTimeFormat}}" class="input"/>
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="page-section-title">创建日期：</view>
-      <view class="form-row">
-        <view class="form-row-content">
-          <input value="{{task.creationTimeFormat}}" class="input"/>
-        </view>
+      <view class="page-section" a:if="{{!task.isCompleted}}">
+        <view class="page-section-btn">
+          <button type="primary" formType="submit">已完成</button></view>
       </view>
+      </form>
     </view>
-    <view class="page-section" a:if="{{!task.isCompleted}}">
-      <view class="page-section-btn">
-        <button type="primary" formType="submit">已完成</button></view>
-    </view>
-  </form>
-</view>

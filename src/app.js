@@ -17,7 +17,7 @@ App({
     // sysInfo:{},
     // host: 'http://gy.intcov.com/',
     //host: 'http://www.scgyyc.com/',
-    //host: 'http://127.0.0.1:21022/',
+    // host: 'http://127.0.0.1:21022/',
     host:'http://pm.hechuangcd.com/',
     // host: 'http://yangfan.vaiwan.com/',
     corpId: '',

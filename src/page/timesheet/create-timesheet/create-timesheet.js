@@ -5,10 +5,14 @@ Page({
     projects: [],
     projectId: 1,
     projectsIndex: 0,
+    employeeId: '',
+    messageId: '',
     workeDate: ''
   },
 
   onLoad(query) {
+    this.setData({ employeeId: query.employeeId, messageId: query.messageId });
+    // let employeeId = query.employeeId;
     this.getProjects();
   },
 
@@ -62,19 +66,23 @@ Page({
     });
   },
 
-//提交审批
+  //提交审批
   onSubmit(e) {
     e.detail.value["projectId"] = this.data.projectId;
     if (!e.detail.value["projectId"])
       return dd.alert({ title: '亲', content: '请选择所属项目', buttonText: '确定' });
-    if (!e.detail.value["workeDate"])
+    else if (!e.detail.value["workeDate"])
       return dd.alert({ title: '亲', content: '请选择工作日期', buttonText: '确定' });
-    if (!e.detail.value["hour"])
+    else if (!e.detail.value["hour"])
       return dd.alert({ title: '亲', content: '请输入工时', buttonText: '确定' });
-    if (!e.detail.value["content"])
+    else if (!e.detail.value["content"])
       return dd.alert({ title: '亲', content: '请输入工作内容', buttonText: '确定' });
-    e.detail.value["employeeId"] = app.globalData.userInfo.id;
-    let pdata = JSON.stringify({ timeSheet: e.detail.value });
+    else
+      if (this.data.employeeId)
+        e.detail.value["employeeId"] = this.data.employeeId;
+      else
+        e.detail.value["employeeId"] = app.globalData.userInfo.id;
+    let pdata = JSON.stringify({ timeSheet: e.detail.value, messageId: this.data.messageId });
     //免登陆
     dd.getAuthCode({
       success: (res) => {
