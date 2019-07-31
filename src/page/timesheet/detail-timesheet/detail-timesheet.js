@@ -18,9 +18,6 @@ Page({
   //获取周报详情
   timeSheet() {
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/TimeSheet/GetByIdAsync?id=' + this.data.id,
           method: 'Get',
@@ -34,12 +31,6 @@ Page({
             dd.hideLoading();
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   },
 
 })

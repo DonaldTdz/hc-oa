@@ -26,9 +26,6 @@ Page({
   //获取项目列表
   getProjects() {
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/Project/GetDropDownsAsync',
           method: 'Get',
@@ -44,12 +41,6 @@ Page({
             dd.hideLoading();
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   },
 
   selectDate() {
@@ -95,9 +86,7 @@ Page({
           success: (res) => {
             dd.alert({
               content: '提交成功', buttonText: '确定', success: () => {
-                dd.navigateTo({
-                  url: "../index",
-                });
+                dd.navigateBack({});
               },
             });
           },

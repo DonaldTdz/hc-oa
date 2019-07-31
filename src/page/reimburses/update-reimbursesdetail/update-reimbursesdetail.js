@@ -17,7 +17,7 @@ Page({
   },
 
   onShow() {
-    this.getReimburseDetail();
+    // this.getReimburseDetail();
   },
 
   bindTypeChange(e) {
@@ -30,15 +30,13 @@ Page({
   //获取报销分类列表
   getTypes() {
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/DataDictionary/GetDropDownDtosByGroupAsync?group=3',
           method: 'Get',
           // dataType: 'json',
           success: (res) => {
             this.setData({ types: res.data.result, typeValue: res.data.result[0].value })
+            this.getReimburseDetail();
           },
           fail: function (res) {
             dd.alert({ content: '获取报销分类列表异常', buttonText: '确定' });
@@ -47,21 +45,12 @@ Page({
             dd.hideLoading();
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   },
 
   //获取报销明细详情
   getReimburseDetail() {
     let typeIndex;
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/ReimburseDetail/GetByIdAsync?id=' + this.data.id,
           method: 'Get',
@@ -81,12 +70,6 @@ Page({
             dd.hideLoading();
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   },
 
   selectHappenDate() {
@@ -120,9 +103,6 @@ Page({
     if (!e.detail.value["amount"])
       return dd.alert({ title: '亲', content: '请输入金额', buttonText: '确定' });
     let pdata = JSON.stringify({ reimburseDetail: e.detail.value });
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/ReimburseDetail/CreateOrUpdateAsync',
           data: pdata,
@@ -132,8 +112,7 @@ Page({
           success: (res) => {
             dd.alert({
               content: '修改成功', buttonText: '确定', success: () => {
-                dd.navigateTo({
-                  url: "../detail-reimburses/detail-reimburses?id=" + this.data.reimburseDetail.reimburseId,
+                  dd.navigateBack({
                 });
               },
             });
@@ -145,11 +124,5 @@ Page({
             dd.hideLoading();
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   }
 })

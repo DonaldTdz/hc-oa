@@ -16,7 +16,7 @@ Page({
           page: '../timesheet/index',
         }, {
           icon: '/images/reimburses.png',
-          title: '项目报销',
+          title: '报销',
           page: '../reimburses/index',
         }, {
           icon: '/images/task-list.png',

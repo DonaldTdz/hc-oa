@@ -22,9 +22,6 @@ Page({
   getTasks() {
     let params = {};
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/CompletedTask/GetPagedAsync',
           method: 'Get',
@@ -32,7 +29,6 @@ Page({
             SkipCount: (this.data.pageIndex - 1) * this.data.pageSize,
             MaxResultCount: this.data.pageSize,
             EmployeeId: app.globalData.userInfo.id,
-            code: res.authCode
           },
           dataType: 'json',
           success: (res) => {
@@ -62,12 +58,6 @@ Page({
             //dd.alert({ content: 'complete' });
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   },
 
   //点击周报跳转周报详情

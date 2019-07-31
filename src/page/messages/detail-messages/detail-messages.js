@@ -44,29 +44,21 @@ Page({
 
   //修改是否已读并获取消息详情
   updateMessageisRead() {
+    let pdata = JSON.stringify({ id: this.data.id });
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
+    dd.httpRequest({
+      url: app.globalData.host + 'api/services/app/Message/ModifyReadByIdAsync',
+      method: 'Post',
+      data: pdata,
+      headers: { 'Content-Type': 'application/json' },
+      dataType: 'json',
       success: (res) => {
-        dd.httpRequest({
-          url: app.globalData.host + 'api/services/app/Message/ModifyReadByIdAsync',
-          method: 'Post',
-            data: { id: this.data.id,isRead:true },
-            headers: { 'Content-Type': 'application/json' },
-          dataType: 'json',
-          success: (res) => {
-            this.setData({ message: res.data.result })
-          },
-          fail: function (res) {
-            dd.alert({ content: '修改是否已读并获取消息详情异常', buttonText: '确定' });
-          },
-          complete: function (res) {
-            dd.hideLoading();
-          }
-        });
+        this.setData({ message: res.data.result })
       },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
+      fail: function(res) {
+        dd.alert({ content: '修改是否已读并获取消息详情异常', buttonText: '确定' });
+      },
+      complete: function(res) {
         dd.hideLoading();
       }
     });

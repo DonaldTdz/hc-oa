@@ -1,5 +1,5 @@
 {
-  "defaultTitle": "项目报销",
+  "defaultTitle": "报销",
   "onReachBottomDistance": 100,
   "usingComponents": {
     "card": "mini-ddui/es/card/index",

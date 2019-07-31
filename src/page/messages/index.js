@@ -9,6 +9,7 @@ Page({
   onLoad(query) {
   },
   onShow() {
+     this.setData({ pageIndex: 1 });
     this.cleanData();
     this.getMessages();
   },
@@ -19,20 +20,17 @@ Page({
       pageSize: 10
     });
   },
+
   getMessages() {
     let params = {};
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/Message/GetPagedAsync',
           method: 'Get',
           data: {
             SkipCount: (this.data.pageIndex - 1) * this.data.pageSize,
             MaxResultCount: this.data.pageSize,
-            EmployeeId: app.globalData.userInfo.id,
-            code: res.authCode
+            EmployeeId: app.globalData.userInfo.id
           },
           dataType: 'json',
           success: (res) => {
@@ -62,12 +60,6 @@ Page({
             //dd.alert({ content: 'complete' });
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   },
 
   //点击周报跳转周报详情
@@ -80,7 +72,7 @@ Page({
   // 页面被拉到底部
   onReachBottom() {
     if (this.data.pageIndex > 1) {
-      this.getTimeSheets();
+      this.getMessages();
     }
   },
 });

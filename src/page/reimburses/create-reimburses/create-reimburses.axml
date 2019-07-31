@@ -2,10 +2,19 @@
   <!--<view class="page-description">表单</view> -->
   <form onSubmit="onSubmit" onReset="onReset">
     <view class="page-section">
+      <view class="page-section-title">报销类型：</view>
+      <view class="page-section-demo">
+        <radio-group class="radio-group" name="type" value="{{reimburse.type}}" onChange="typeChange">
+          <label a:for="{{reimburseTypes}}">
+            <radio value="{{item.value}}" />{{item.text}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view hidden="{{reimburseType == 2}}" class="page-section">
       <view class="page-section-title">所属项目：</view>
       <picker onChange="bindProjectsChange" value="{{projectsIndex}}" range="{{projects}}" range-key="text">
         <view class="row">
-          <!--<view class="row-title">所属项目：</view> -->
           <view class="row-extra">{{projects[projectsIndex].text}}</view>
           <image class="row-arrow" src="/images/arrowright.png" mode="aspectFill" />
         </view>
@@ -16,21 +25,20 @@
       <view class="form-row">
         <!--<view class="form-row-label">总金额：</view> -->
         <view class="form-row-content">
-          <input class="input" type="digit" name="amount" value="{{reimburse.amount?reimburse.amount:0}}" disabled="true" placeholder="小数点保留两位" />
+          <input class="input" type="digit" name="amount" value="{{amount}}" disabled="true" placeholder="小数点保留两位" />
         </view>
       </view>
       <!--<view class="form-line" /> -->
       <!--<view class="form-row"><view class="form-row-label">Input</view><view class="form-row-content"><input name="input" class="input" placeholder="input something" /></view></view> -->
     </view>
-    <view class="page-section">
+    <!-- <view class="page-section">
       <view class="page-section-title">申请时间：</view>
       <view class="form-row">
-        <!--<view class="form-row-label">申请时间</view> -->
         <view class="form-row-content">
           <input name="submitDate" value="{{submitDate}}" class="input" onFocus="selectDate" placeholder="请选择申请时间" />
         </view>
       </view>
-    </view>
+    </view> -->
     <view>
       <button type="primary" formType="submit">新增报销明细</button>
     </view>

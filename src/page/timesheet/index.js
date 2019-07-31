@@ -7,10 +7,13 @@ Page({
     items: [],
   },
   onLoad(query) {
-    this.cleanData();
-    this.getTimeSheets();
+    // this.cleanData();
+    // this.getTimeSheets();
   },
   onShow() {
+    this.setData({ items: [],pageIndex: 1, })
+    this.cleanData();
+    this.getTimeSheets();
     // this.cleanData();
     // this.getReimburses();
   },
@@ -24,17 +27,13 @@ Page({
   getTimeSheets() {
     let params = {};
     dd.showLoading();
-    //免登陆
-    dd.getAuthCode({
-      success: (res) => {
         dd.httpRequest({
           url: app.globalData.host + 'api/services/app/TimeSheet/GetPagedAsync',
           method: 'Get',
           data: {
             SkipCount: (this.data.pageIndex - 1) * this.data.pageSize,
             MaxResultCount: this.data.pageSize,
-            EmployeeId: app.globalData.userInfo.id,
-            code: res.authCode
+            EmployeeId: app.globalData.userInfo.id
           },
           dataType: 'json',
           success: (res) => {
@@ -56,20 +55,14 @@ Page({
               this.setData({ items: datas });
             }
           },
-          fail: function (res) {
+          fail: function(res) {
             dd.alert({ content: '获取周报列表异常', buttonText: '确定' });
           },
-          complete: function (res) {
+          complete: function(res) {
             dd.hideLoading();
             //dd.alert({ content: 'complete' });
           }
         });
-      },
-      fail: function (err) {
-        dd.alert({ content: '授权出错', buttonText: '确定' });
-        dd.hideLoading();
-      }
-    });
   },
 
   //点击周报跳转周报详情
