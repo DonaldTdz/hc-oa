@@ -13,7 +13,7 @@ App({
     console.log('App Hide');
   },
   globalData: {
-    userInfo: { id: '', name: '', position: '', avatar: '' },
+    userInfo: { id: '', name: '', position: '', avatar: ''},
     // sysInfo:{},
     // host: 'http://127.0.0.1:21022/',
     host:'http://pm.hechuangcd.com/',

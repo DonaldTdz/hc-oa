@@ -33,13 +33,13 @@
       <list-item>
         <view>审批人：
         </view>
-        <view slot="extra">{{timeSheet.approvalName}}
+        <view slot="extra">{{timeSheet.approverName}}
         </view>
       </list-item>
       <list-item>
         <view>审批时间：
         </view>
-        <view slot="extra">{{timeSheet.approvalTime}}
+        <view slot="extra">{{timeSheet.approvalTimeFormat}}
         </view>
       </list-item>
     </list>

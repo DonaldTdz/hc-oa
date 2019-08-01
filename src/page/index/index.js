@@ -37,7 +37,6 @@ Page({
       //免登陆
       dd.getAuthCode({
         success: (res) => {
-          //  console.log('My authCode', res.authCode);
           dd.httpRequest({
             url: app.globalData.host + 'api/services/app/Employee/GetDingDingUserByCodeAsync',
             method: 'Get',
