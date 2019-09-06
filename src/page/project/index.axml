@@ -1,14 +1,12 @@
 <import src="/util/grid/index.axml"/>
-<view>
-  <button type="primary" onTap="createReimburses">新增</button>
-</view>
 <view hidden="{{items.length == 0}}" class="page-margin page-padding-bottom">
   <list>
-    <view slot="header">工时统计列表</view>
+    <view slot="header">项目列表</view>
     <block a:for="{{items}}">
-      <list-item key="item-{{index}}" index="{{index}}" last="{{index === (items.length - 1)}}" arrow="{{true}}" wrap="{{true}}" onClick="goVisit">{{item.projectName}}
-        <view class="am-list-brief fsize12">[{{item.employeeName}}]工时：{{item.hour}}小时</view>
-        <view class="am-list-brief fsize12">工作日期：{{item.workeDateFormat}}</view>
+      <list-item key="item-{{index}}" index="{{index}}" last="{{index === (items.length - 1)}}" arrow="{{true}}" wrap="{{true}}" >
+        <view hidden="{{item.type == 2}}" class="am-list-brief fsize12">项目名称：{{item.name}}</view>
+        <view class="am-list-brief fsize12">{{item.employeeName}}开始日期：{{item.startDateFormat}}元</view>
+        <!-- <view class="am-list-brief fsize12">申请时间：{{item.submitDateFormat}}</view> -->
         <view slot="extra" class="fsize12">{{item.statusName}}</view>
       </list-item>
     </block>

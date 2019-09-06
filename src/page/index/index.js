@@ -22,11 +22,14 @@ Page({
           icon: '/images/task-list.png',
           title: '任务列表',
           page: '../completedtask/index',
-        }
-        , {
+        }, {
           icon: '/images/msg.png',
           title: '消息中心',
           page: '../messages/index',
+        }, {
+          icon: '/images/project.png',
+          title: '项目列表',
+          page: '../project/index',
         }
       ],
     }
@@ -80,7 +83,7 @@ Page({
   onGridItemTap(e) {
     const curIndex = e.currentTarget.dataset.index;
     const pageNav = this.data.arr.list[curIndex];
-    if (curIndex == 4) {
+    if (curIndex ==5) {
       if (app.globalData.userInfo.areaCode == 4) {
         dd.navigateTo({
           url: pageNav.page,

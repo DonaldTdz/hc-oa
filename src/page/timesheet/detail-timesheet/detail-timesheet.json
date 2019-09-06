@@ -1,5 +1,5 @@
 {
-  "defaultTitle": "周报详情",
+  "defaultTitle": "工时详情",
   "usingComponents": {
     "card": "mini-ddui/es/card/index",
     "list": "mini-ddui/es/list/index",
