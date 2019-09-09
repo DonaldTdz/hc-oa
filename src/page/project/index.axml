@@ -5,7 +5,7 @@
     <block a:for="{{items}}">
       <list-item key="item-{{index}}" index="{{index}}" last="{{index === (items.length - 1)}}" arrow="{{true}}" wrap="{{true}}" >
         <view hidden="{{item.type == 2}}" class="am-list-brief fsize12">项目名称：{{item.name}}</view>
-        <view class="am-list-brief fsize12">{{item.employeeName}}开始日期：{{item.startDateFormat}}元</view>
+        <view class="am-list-brief fsize12">{{item.employeeName}}开始日期：{{item.startDateFormat}}</view>
         <!-- <view class="am-list-brief fsize12">申请时间：{{item.submitDateFormat}}</view> -->
         <view slot="extra" class="fsize12">{{item.statusName}}</view>
       </list-item>
