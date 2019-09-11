@@ -27,11 +27,9 @@ Page({
   getProjects() {
     dd.showLoading();
         dd.httpRequest({
-          url: app.globalData.host + 'api/services/app/Project/GetDropDownsAsync',
+          url: app.globalData.host + 'api/services/app/Project/GetDropDownsByAppAsync?appMenu='+1,  //查询条件工时统计
           method: 'Get',
-          // dataType: 'json',
           success: (res) => {
-            //console.info(`schedule: ${JSON.stringify(res.data.result)}`);
             this.setData({ projects: res.data.result, projectId: res.data.result[0].value })
           },
           fail: function (res) {
